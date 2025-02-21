@@ -6,15 +6,25 @@
     <title>Formulario de Paciente</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-lg max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold mb-5">Formulario de Paciente</h1>
+        <div class="flex items-center justify-between w-full mb-5">
+            <div>
+                <img src="{{ asset('images/DrLuis.jpg') }}" alt="logo" class="w-18 h-20 mx-auto mb-5 object-cover">
+            </div>
+            <div>
+                <img src="{{ asset('images/LaVina.jpg') }}" alt="logo" class="w-20 h-20 mx-auto mb-5 object-cover">
+            </div>
+        </div>
+        <h1 class="text-xl font-bold text-gray-800 mb-5">Formulario para recolección de datos en artroplastia total de cadera primarias y de revisión
+        utilizadas en el Centro Policlinico “La Viña”.</h1>
         <form id="multiStepForm" class="w-full">
             <div class="step" id="step1" >
-                <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5">Parte 1: Paciente</h2>
+                <div class="h-10 flex bg-blue-700 mb-6">
+                    <h2 class="text-white self-center">Parte 1: Paciente</h2>
+                </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                     <x-inputText label="Nombre" identificador="nombre" />
                     <x-inputText label="Apellido" identificador="apellido" />
@@ -58,7 +68,7 @@
             </div>
 
             <div class="step" id="step2" style="display:none;">
-                <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5 text-center">Parte 2: Componentes Protesicos</h2>
+                <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5">Parte 2: Componentes Protesicos</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                     <x-inputText label="Acetábulo/Tipo" identificador="tipoAcetabulo" />
                     <x-inputText label="Tamaño" identificador="tamano" />
@@ -93,7 +103,7 @@
             </div>
 
             <div class="step" id="step3" style="display:none;">
-                <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5 text-center">Parte 3: Otros</h2>
+                <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5">Parte 3: Otros</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                     <x-inputText label="Duración de Cirugía (minutos)" identificador="duracionCirugia" />
                     <x-inputText label="Cirujano" identificador="cirujano" />
@@ -121,7 +131,7 @@
             </div>
 
             <div class="step" id="step4" style="display:none;">
-                <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5 text-center">Parte 4: Complicaciones</h2>
+                <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5">Parte 4: Complicaciones</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                     <div class="mb-6 col-span-4 md:col-span-3">
                         <label for="fracturasIntraoperatorias" class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">Fracturas Intraoperatorias (Sí/No)</label>
@@ -161,36 +171,8 @@
             </div>
         </form>
     </div>
-    <script>
-            let currentStep = 0;
-            showStep(currentStep);
-
-            function showStep(n) {
-                let steps = document.getElementsByClassName("step");
-                steps[n].style.display = "block";
-                if (n == 0) {
-                    document.getElementById("prevBtn").style.display = "none";
-                } else {
-                    document.getElementById("prevBtn").style.display = "inline";
-                }
-                if (n == (steps.length - 1)) {
-                    document.getElementById("nextBtn").innerHTML = "Enviar";
-                } else {
-                    document.getElementById("nextBtn").innerHTML = "Siguiente";
-                }
-            }
-
-            function nextPrev(n) {
-                let steps = document.getElementsByClassName("step");
-                steps[currentStep].style.display = "none";
-                currentStep = currentStep + n;
-                if (currentStep >= steps.length) {
-                    document.getElementById("multiStepForm").submit();
-                    return false;
-                }
-                showStep(currentStep);
-            }
-    </script>
+    <script src="{{ asset('js/multipaso.js') }}"></script>
+    <script src="{{ asset('js/Scroll.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
 </html>

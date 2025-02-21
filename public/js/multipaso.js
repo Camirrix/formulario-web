@@ -26,3 +26,5 @@ let currentStep = 0;
             }
             showStep(currentStep);
         }
+
+
