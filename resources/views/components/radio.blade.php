@@ -1,4 +1,4 @@
-<div class="mb-6 col-span-4 md:col-span-3">
+<div class="mb-6 col-span-4">
     <label for="{{ $identificador ?? '' }}" class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">{{ $label ?? '' }}</label>
         <div id="{{ $identificador ?? '' }}" class="flex items-center mb-4">
             <input id="{{ $identificador ?? '' }}{{ $opcion1 ?? '' }}" type="radio" value="{{ $opcion1 ?? '' }}" name="{{ $identificador ?? '' }}" class="w-4 h-4 text-blue-600 bg-gray-300 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
