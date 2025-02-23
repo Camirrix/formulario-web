@@ -20,14 +20,15 @@
         </div>
         <h1 class="text-xl font-bold text-gray-800 mb-5">Formulario para recolección de datos en artroplastia total de cadera primarias y de revisión
         utilizadas en el Centro Policlinico “La Viña”.</h1>
-        <form id="multiStepForm" class="w-full">
+        <form id="multiStepForm" method="POST" action="{{ route('paciente.store') }}" class="w-full">
+            @csrf
             <div class="step" id="step1" >
                 <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5">Parte 1: Paciente</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                     <x-input type="text" label="Número de historia" identificador="historia" />
                     <x-input type="text" label="Nombres" identificador="nombres" />
                     <x-input type="text" label="Apellidos" identificador="apellidos" />
-                    <x-datepicker label="Fecha cirugía" identificador="fecha_cirugía" />
+                    <x-datepicker label="Fecha cirugía" identificador="fecha_cirugia" />
                     <x-input type="text" label="Cadera" identificador="cadera" />
                     <x-input type="number" label="Edad" identificador="edad" />
                     <x-input type="text" label="Clínica/Hospital" identificador="clinica" />
@@ -61,7 +62,7 @@
                     <x-input type="text" label="Tamaño" identificador="tamanoAcetabulo" />
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
-                    <x-input type="text" label="Tamaño liner de polietileno" identificador="tamanoLiner" />
+                    <x-input type="text" label="Tamaño liner de polietileno" identificador="tamanoLinerPoli" />
                     <x-select label="Opciones de liner" identificador="opcionesliner" :options="[
                             ['value' => 'Oxinium', 'label_opcion' => 'Oxinium'],
                             ['value' => 'Ceramico', 'label_opcion' => 'Cerámico'],
@@ -126,7 +127,7 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-8 gap-6">
-                <x-radio label="Defectos óseos acetábulo" identificador="defectosOseos" opcion1="Si" opcion2="No" />
+                <x-radio label="Defectos óseos acetábulo" identificador="defectosOseosAce" opcion1="Si" opcion2="No" />
                     <div class="col-span-4">
                     <x-input type="text" label="Praposky Tipo" identificador="praposkyTipoAcetabulo" />
                     </div>
@@ -150,6 +151,10 @@
                 <button type="button" id="nextBtn" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onclick="nextPrev(1)">Siguiente</button>
             </div>
         </form>
+        <div id="successMessage" class="hidden text-center">
+            <h2 class="text-2xl font-bold text-green-600 mt-7">¡Formulario enviado con éxito!</h2>
+            <p class="mt-3 mb-10 text-gray-600">Gracias por tu colaboración.</p>
+        </div>
     </div>
     <script src="{{ asset('js/multipaso.js') }}"></script>
     <script src="{{ asset('js/Scroll.js') }}"></script>
