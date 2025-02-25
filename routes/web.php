@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\AdminPacienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,7 @@ Route::get('/', function () {
 });
 
 Route::post('/paciente', [PacienteController::class, 'store'])->name('paciente.store');
+
+Route::get('/admin', [AdminPacienteController::class, 'index'])->name('admin.pacientes.index');
+Route::get('/admin/paciente/{id}', [AdminPacienteController::class, 'show'])->name('admin.paciente.show');
+Route::get('/admin/pacientes/{id}', [AdminPacienteController::class, 'show'])->name('admin.pacientes.show');

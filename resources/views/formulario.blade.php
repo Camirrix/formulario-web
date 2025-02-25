@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Paciente</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body class="bg-gray-200">
+@extends('layouts.app')
+
+@section('title', 'Formulario')
+
+@section('content')
     <div class="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-lg max-w-4xl mx-auto">
         <div class="flex items-center justify-between w-full mb-5">
             <div>
@@ -156,8 +150,4 @@
             <p class="mt-3 mb-10 text-gray-600">Gracias por tu colaboración.</p>
         </div>
     </div>
-    <script src="{{ asset('js/multipaso.js') }}"></script>
-    <script src="{{ asset('js/Scroll.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-</body>
-</html>
+@endsection
