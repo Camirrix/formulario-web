@@ -22,13 +22,14 @@
                     <x-input type="text" label="Número de historia" identificador="historia" />
                     <x-input type="text" label="Nombres" identificador="nombres" />
                     <x-input type="text" label="Apellidos" identificador="apellidos" />
-                    <x-datepicker label="Fecha cirugía" identificador="fecha_cirugia" />
-                    <x-input type="text" label="Cadera" identificador="cadera" />
+                    <x-input type="number" label="Cédula" identificador="cedula" />
                     <x-input type="number" label="Edad" identificador="edad" />
-                    <x-input type="text" label="Clínica/Hospital" identificador="clinica" />
-                    <x-input type="text" label="Cirugía de cadera previa" identificador="cirugia_previa" />
                     <x-input type="number" label="Teléfono" identificador="telefono" />
                     <x-input type="text" label="Dirección" identificador="direccion" />
+                    <x-datepicker label="Fecha cirugía" identificador="fechaCirugia" />
+                    <x-radio label="Cadera" identificador="cadera" opcion1="Izquierda" opcion2="Derecha"/>
+                    <x-input type="text" label="Clínica/Hospital" identificador="clinica" />
+                    <x-input type="text" label="Cirugía de cadera previa" identificador="cirugia_previa" />
                     <x-select label="Diagnóstico" identificador="diagnostico" :options="[
                         ['value' => 'Osteoartrosis', 'label_opcion' => 'Osteoartrosis'],
                         ['value' => 'Artritis', 'label_opcion' => 'Artritis Reumatoide'],
@@ -38,11 +39,11 @@
                     <x-radio label="Tipo de cirugía" identificador="tipoCirugia" opcion1="Primaria" opcion2="Revision" />
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
-                    <x-input type="text" label="Score de Harris" identificador="scoreHarris" />
-                    <x-input type="text" label="Peso" identificador="peso" />
-                    <x-input type="text" label="Talla" identificador="talla" />
+                    <x-input type="number" label="Score de Harris" identificador="scoreHarris" />
+                    <x-input type="number" label="Peso (kg)" identificador="peso" />
+                    <x-input type="number" label="Talla (cm)" identificador="talla" />
                     <x-input type="text" label="Índice de Masa Corporal" identificador="imc" />
-                    <div class="col-span-2 md:col-span-4">
+                    <div class="col-span-4 md:col-span-4">
                         <x-input type="text" label="Comorbilidades" identificador="comorbilidades" />
                     </div>
                     <x-textArea label="Comentarios Adicionales" identificador="comentarioAdicionales" />
@@ -50,14 +51,14 @@
             </div>
 
             <div class="step" id="step2" style="display:none;">
-                <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5">Parte 2: Componentes Protesicos</h2>
+                <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5">Parte 2: Componentes protésicos</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                     <x-input type="text" label="Acetábulo/Tipo" identificador="tipoAcetabulo" />
                     <x-input type="text" label="Tamaño" identificador="tamanoAcetabulo" />
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mb-5">
                     <x-input type="text" label="Tamaño liner de polietileno" identificador="tamanoLinerPoli" />
-                    <x-select label="Opciones de liner" identificador="opcionesliner" :options="[
+                    <x-select label="Tipo de liner" identificador="tipoLiner" :options="[
                             ['value' => 'Oxinium', 'label_opcion' => 'Oxinium'],
                             ['value' => 'Ceramico', 'label_opcion' => 'Cerámico'],
                             ['value' => 'Metal', 'label_opcion' => 'Metal'],
@@ -69,7 +70,12 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                     <x-input type="text" label="Número de tornillos acetabulares" identificador="numTornillos" />
                     <x-input type="text" label="Medidas de Tornillos Acetabulares" identificador="medidasTornillos" />
-                    <x-input type="text" label="Fémur/Tipo" identificador="tipoFemur" />
+                    <x-input type="text" label="Tipo de vástago femoral" identificador="tipoVastago" />
+                    <x-select label="Femur Dorr" identificador="femurDorr" :options="[
+                            ['value' => 'A', 'label_opcion' => 'A'],
+                            ['value' => 'B', 'label_opcion' => 'B'],
+                            ['value' => 'C', 'label_opcion' => 'C']
+                        ]" />
                     <x-input type="text" label="Medidas de Tallo" identificador="medidasTallo" />
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
@@ -84,60 +90,75 @@
             <div class="step" id="step3" style="display:none;">
                 <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5">Parte 3: Otros</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-                    <div class="col-span-3 grid grid-cols-subgrid gap-4">
-                        <x-input type="text" label="Duración de Cirugía (minutos)" identificador="duracionCirugia" />
+                    <div class="col-span-4 md:col-span-2 grid grid-cols-subgrid gap-4">
+                        <x-input type="text" label="Duración de la cirugía (minutos)" identificador="duracionCirugia" />
                     </div>
                     <x-input type="text" label="Cirujano" identificador="cirujano" />
-                    <x-input type="text" label="1er Ayudante" identificador="primerAyudante" />
-                    <x-input type="text" label="Segundo Ayudante" identificador="segundoAyudante" />
-                    <x-input type="text" label="Hemoglobina Preoperatoria" identificador="hemoglobinaPreop" />
-                    <x-input type="text" label="Hemoglobina Postoperatoria" identificador="hemoglobinaPostop" />
-                    <x-input type="text" label="Pérdidas Hemáticas" identificador="perdidasHematicas" />
+                    <x-input type="text" label="Primer ayudante" identificador="primerAyudante" />
+                    <x-input type="text" label="Segundo ayudante" identificador="segundoAyudante" />
+                    <x-input type="text" label="Hemoglobina preoperatoria" identificador="hemoglobinaPreop" />
+                    <x-input type="text" label="Hemoglobina postoperatoria" identificador="hemoglobinaPostop" />
+                    <x-input type="text" label="Pérdidas hemáticas (aproximadas)" identificador="perdidasHematicas" />
                     <x-input type="text" label="Anestesiólogo" identificador="anestesiologo" />
-                    <x-input type="text" label="Tipo de Anestesia" identificador="tipoAnestesia" />
+                    <x-input type="text" label="Tipo de anestesia" identificador="tipoAnestesia" />
                     <x-input type="text" label="Abordaje" identificador="abordaje" />
                 </div>
                 <div class="grid grid-cols-8 gap-6">
-                    <x-radio label="Necesidad de sangre (Si/No)" identificador="necesidadSangre" opcion1="Si" opcion2="No" />
-                    <div class="col-span-4">
-                        <x-input label="Número de Unidades de Sangre" identificador="numUnidadesSangre" />
+                    <x-radio label="Necesidad de sangre" identificador="necesidadSangre" opcion1="Si" opcion2="No" />
+                    <div class="col-span-8 md:col-span-4 hidden" id="numUnidadesSangreContainer">
+                        <x-select label="Número de unidades de sangre" identificador="numUnidadesSangre" :options="[
+                            ['value' => '1', 'label_opcion' => '1 Unidad'],
+                            ['value' => '2', 'label_opcion' => '2 Unidades'],
+                            ['value' => '3', 'label_opcion' => '3 Unidades']
+                        ]" />
                     </div>
                 </div>
             </div>
 
+
             <div class="step" id="step4" style="display:none;">
                 <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5">Parte 4: Complicaciones</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-                    <x-radio label="Fracturas Intraoperatorias (Sí/No)" identificador="fracturasIntraoperatorias" opcion1="Si" opcion2="No" />
-                    <x-input type="text" label="Tipo de fractura (Vancouver)" identificador="tipoFractura" />
-                    <x-input type="text" label="Tratamiento" identificador="tratamiento" />
+                    <x-radio label="Fracturas Intraoperatorias" identificador="fracturasIntraoperatorias" opcion1="Si" opcion2="No" />
+                    <div class="hidden col-span-4 md:col-span-2" id="tipoFracturaContainer">
+                        <x-select label="Tipo de fractura" identificador="tipoFractura" :options="[
+                                ['value' => '1', 'label_opcion' => 'Vancouver'],
+                                ['value' => '2', 'label_opcion' => 'Vancouver'],
+                                ['value' => '3', 'label_opcion' => 'Vancouver']
+                            ]" />
+                    </div>
+                    <div class="hidden col-span-4 md:col-span-2" id="tratamientoContainer">
+                        <x-input type="text" label="Tratamiento" identificador="tratamiento" />
+                    </div>
                     <x-textArea  label="Otras Complicaciones" identificador="otrasComplicaciones" />
                     <x-input type="text" label="Defectos Óseos" identificador="defectosOseos" />
                 </div>
-                <div class="grid grid-cols-8 gap-6">
-                <x-radio label="Fémur" identificador="femur" opcion1="Si" opcion2="No" />
-                    <div class="col-span-4">
-                    <x-input type="text" label="Praposky Tipo" identificador="praposkyTipoFemur" />
+                <div class="grid grid-cols-8 gap-6 mb-4">
+                    <x-radio label="Fémur" identificador="femur" opcion1="Si" opcion2="No"/>
+                    <div class="col-span-4 hidden" id="praposkyTipoFemurContainer">
+                        <x-input type="text" label="Praposky Tipo" identificador="praposkyTipoFemur" />
                     </div>
                 </div>
-                <div class="grid grid-cols-8 gap-6">
-                <x-radio label="Defectos óseos acetábulo" identificador="defectosOseosAce" opcion1="Si" opcion2="No" />
-                    <div class="col-span-4">
-                    <x-input type="text" label="Praposky Tipo" identificador="praposkyTipoAcetabulo" />
+                <div class="grid grid-cols-8 gap-6 mb-6">
+                    <x-radio label="Defectos óseos acetábulo" identificador="defectosOseosAce" opcion1="Si" opcion2="No" />
+                    <div class="col-span-4 hidden" id="praposkyTipoAcetabuloContainer">
+                        <x-input type="text" label="Praposky Tipo" identificador="praposkyTipoAcetabulo" />
                     </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-8 gap-6 mb-6">
                     <x-radio label="Protrusión Acetabular" identificador="protrusionAce" opcion1="Si" opcion2="No" />
                     <x-radio label="Discontinuidad Pélvica" identificador="discontinuidadPelvica" opcion1="Si" opcion2="No" />
                     <x-radio label="Aporte Biológico" identificador="aporteBiologico" opcion1="No" opcion2="Si" />
-                    <x-select label="Tipo de Aporte Biológico" identificador="tipoAporteBiologico" :options="[
-                        ['value' => 'Forma', 'label_opcion' => 'Forma'],
-                        ['value' => 'Injerto Óseo en Chip', 'label_opcion' => 'Injerto Óseo en Chip'],
-                        ['value' => 'Pila de Monedas', 'label_opcion' => 'Pila de Monedas'],
-                        ['value' => 'Injerto Óseo Estructural de Cabeza de Fémur', 'label_opcion' => 'Injerto Óseo Estructural de Cabeza de Fémur'],
-                        ['value' => 'Médula Ósea', 'label_opcion' => 'Médula Ósea'],
-                        ['value' => 'Otros', 'label_opcion' => 'Otros']
-                    ]" />
+                    <div class="col-span-4 hidden" id="tipoAporteBiologicoContainer">
+                        <x-select label="Tipo de Aporte Biológico" identificador="tipoAporteBiologico" :options="[
+                            ['value' => 'Forma', 'label_opcion' => 'Forma'],
+                            ['value' => 'Injerto Óseo en Chip', 'label_opcion' => 'Injerto Óseo en Chip'],
+                            ['value' => 'Pila de Monedas', 'label_opcion' => 'Pila de Monedas'],
+                            ['value' => 'Injerto Óseo Estructural de Cabeza de Fémur', 'label_opcion' => 'Injerto Óseo Estructural de Cabeza de Fémur'],
+                            ['value' => 'Médula Ósea', 'label_opcion' => 'Médula Ósea'],
+                            ['value' => 'Otros', 'label_opcion' => 'Otros']
+                        ]" />
+                    </div>
                 </div>
             </div>
             <div class="mt-6 flex items-center justify-end gap-x-6">
