@@ -5,3 +5,4 @@
 @section('content')
     <x-list :paciente="$paciente"></x-list>
 @endsection
+

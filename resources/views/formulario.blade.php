@@ -3,7 +3,7 @@
 @section('title', 'Formulario')
 
 @section('content')
-    <div class="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-lg max-w-4xl mx-auto">
+    <div class="mt-4 flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-lg max-w-4xl mx-auto">
         <div class="flex items-center justify-between w-full mb-5">
             <div>
                 <img src="{{ asset('images/DrLuis.jpg') }}" alt="logo" class="w-18 h-20 mx-auto mb-5 object-cover">
@@ -164,11 +164,9 @@
             <div class="mt-6 flex items-center justify-end gap-x-6">
                 <button type="button" id="prevBtn" class="text-sm/6 font-semibold text-gray-900" style="display:none;" onclick="nextPrev(-1)">Anterior</button>
                 <button type="button" id="nextBtn" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onclick="nextPrev(1)">Siguiente</button>
+                <x-modal></x-modal>
             </div>
         </form>
-        <div id="successMessage" class="hidden text-center">
-            <h2 class="text-2xl font-bold text-green-600 mt-7">¡Formulario enviado con éxito!</h2>
-            <p class="mt-3 mb-10 text-gray-600">Gracias por tu colaboración.</p>
-        </div>
+
     </div>
 @endsection

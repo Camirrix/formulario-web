@@ -29,6 +29,8 @@ class Paciente extends Model
         'imc',
         'comorbilidades',
         'comentarioAdicionales',
+
+        //Parte 2
         'tipoAcetabulo',
         'tamanoAcetabulo',
         'tamanoLinerPoli',
@@ -44,6 +46,8 @@ class Paciente extends Model
         'Cono',
         'cementado',
         'comentariosAdicionales',
+
+        //Parte 3
         'duracionCirugia',
         'cirujano',
         'primerAyudante',
@@ -56,6 +60,8 @@ class Paciente extends Model
         'abordaje',
         'necesidadSangre',
         'numUnidadesSangre',
+
+        //Parte 4
         'fracturasIntraoperatorias',
         'tipoFractura',
         'tratamiento',

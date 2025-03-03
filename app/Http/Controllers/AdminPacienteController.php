@@ -9,7 +9,7 @@ class AdminPacienteController extends Controller
 {
     public function index()
     {
-        $pacientes = Paciente::all();
+        $pacientes = Paciente::select('nombres', 'apellidos', 'cedula', 'fechaCirugia', 'clinica','historia', 'tipoCirugia','id')->get();
         return view('admin.pacientes.index', compact('pacientes'));
     }
 
