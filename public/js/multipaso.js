@@ -10,6 +10,7 @@ function showStep(n) {
     } else {
         document.getElementById("prevBtn").style.display = "inline";
     }
+    // Mostrar "Enviar" en el último paso
     if (n == (steps.length - 1)) {
         document.getElementById("nextBtn").innerHTML = "Enviar";
     } else {
@@ -19,16 +20,19 @@ function showStep(n) {
 
 function nextPrev(n) {
     let steps = document.getElementsByClassName("step");
+
+    if (n == 1 && currentStep == 3) {
+        // Si estamos en el último paso y vamos a avanzar, mostrar el modal
+        previousStep = currentStep; // Guarda el paso actual antes de avanzar
+        document.getElementById("openModalBtn").click();
+        return false; // No avanzar al siguiente paso todavía
+    }
+
     steps[currentStep].style.display = "none";
     currentStep = currentStep + n;
 
-    // Verificar si currentStep es mayor o igual a 4
-    if (currentStep >= 4) {
-        currentStep = 3; // Establecer currentStep en 3 (el cuarto paso)
-        // Mostrar el modal de confirmación
-        previousStep = currentStep; // Guarda el paso actual antes de avanzar
-        document.getElementById("openModalBtn").click();
-        return false;
+    if (currentStep >= steps.length) {
+        currentStep = steps.length - 1;
     }
 
     showStep(currentStep);
@@ -40,7 +44,9 @@ document.getElementById("confirmSubmitBtn").addEventListener("click", function()
 });
 
 document.getElementById("cancelSubmitBtn").addEventListener("click", function() {
-    currentStep = previousStep; // Restaura el paso anterior
-    showStep(3); // Actualiza la visualización
+    // Restaura el paso anterior
+    document.getElementsByClassName("step")[currentStep].style.display = "none";
+    currentStep = previousStep;
+    showStep(currentStep); // Actualiza la visualización
 });
 

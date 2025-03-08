@@ -15,7 +15,7 @@
                         </svg>
                     </span>
                 </th >
-                <th class="hidden md:table-cell pb-4">
+                <th class="hidden sm:table-cell pb-4">
                     <span class="flex items-center px-3 md:px-6">
                         Historia
                         <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -31,7 +31,7 @@
                         </svg>
                     </span>
                 </th>
-                <th class="hidden md:table-cell pb-4">
+                <th class="hidden 3xl:table-cell pb-4">
                     <span class="flex items-center px-3 md:px-6">
                         Revisión
                         <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -71,13 +71,13 @@
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $paciente->nombres ?? '' }} {{ $paciente->apellidos ?? '' }}
                         </td>
-                        <td class="px-3 md:px-6 py-4 hidden md:table-cell">
+                        <td class="px-3 sm:px-6 py-4 hidden sm:table-cell">
                             {{ $paciente->historia ?? 'Sin historia' }}
                         </td>
                         <td class="px-3 sm:px-6 py-4 hidden sm:table-cell">
                             {{ $paciente->cedula ?? 'Sin cedula' }}
                         </td>
-                        <td class="px-3 md:px-6 py-4 hidden md:table-cell">
+                        <td class="px-3 md:px-6 py-4 hidden 3xl:table-cell">
                             {{ $paciente->tipoCirugia ?? 'Sin cirugia' }}
                         </td>
                         <td class="px-3 md:px-6 py-4 hidden md:table-cell">
@@ -86,7 +86,7 @@
                         <td class="px-6 py-4 hidden lg:table-cell">
                             {{ $paciente->clinica ?? 'Sin dirección' }}
                         </td>
-                        <td class="px-3 md:px-6 py-4">
+                        <td class="px-3 md:pl-4 py-4">
                             <a href="{{ route('admin.pacientes.show', $paciente->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">VER</a>
                         </td>
                     </tr>

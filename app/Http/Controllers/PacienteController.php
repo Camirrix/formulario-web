@@ -14,7 +14,7 @@ class PacienteController extends Controller
             'historia'         => 'nullable|string',
             'nombres'          => 'nullable|string',
             'apellidos'        => 'nullable|string',
-            'cedula'           => 'nullable|number',
+            'cedula'           => 'nullable|numeric',
             'edad'             => 'nullable|integer',
             'telefono'         => 'nullable|string',
             'direccion'        => 'nullable|string',
