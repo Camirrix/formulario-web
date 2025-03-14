@@ -9,6 +9,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="bg-gray-200">
+    <header>
+        <x-navbar_form />
+    </header>
     <main>
         @yield('content')
     </main>

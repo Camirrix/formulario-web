@@ -13,7 +13,7 @@
             </div>
         </div>
         <h1 class="text-xl font-bold text-gray-800 mb-5">Formulario para recolección de datos en artroplastia total de cadera primarias y de revisión
-        utilizadas en el Centro Policlinico “La Viña”.</h1>
+        utilizadas programa de entrenamiento de reemplazos articulares de cadera y rodilla del "Dr. Luis Silva Cisneros".</h1>
         <form id="multiStepForm" method="POST" action="{{ route('paciente.store') }}" class="w-full">
             @csrf
             <div class="step" id="step1" >
@@ -122,9 +122,15 @@
                     <x-radio label="Fracturas Intraoperatorias" identificador="fracturasIntraoperatorias" opcion1="Si" opcion2="No" />
                     <div class="hidden col-span-4 md:col-span-2" id="tipoFracturaContainer">
                         <x-select label="Tipo de fractura" identificador="tipoFractura" :options="[
-                                ['value' => '1', 'label_opcion' => 'Vancouver'],
-                                ['value' => '2', 'label_opcion' => 'Vancouver'],
-                                ['value' => '3', 'label_opcion' => 'Vancouver']
+                                ['value' => 'A1', 'label_opcion' => 'A1 (Perforación cortical)'],
+                                ['value' => 'A2', 'label_opcion' => 'A2 (Grieta lineal no desplazada)'],
+                                ['value' => 'A3', 'label_opcion' => 'A3 (Fractura desplazada inestable)'],
+                                ['value' => 'B1', 'label_opcion' => 'B1 (Perforación cortical)'],
+                                ['value' => 'B2', 'label_opcion' => 'B2 (Grieta lineal no desplazada)'],
+                                ['value' => 'B3', 'label_opcion' => 'B3 (Fractura desplazada inestable)'],
+                                ['value' => 'C1', 'label_opcion' => 'C1 (Perforación cortical)'],
+                                ['value' => 'C2', 'label_opcion' => 'C2 (Grieta lineal no desplazada)'],
+                                ['value' => 'C3', 'label_opcion' => 'C3 (Fractura desplazada inestable)']
                             ]" />
                     </div>
                     <div class="hidden col-span-4 md:col-span-2" id="tratamientoContainer">
@@ -136,13 +142,28 @@
                 <div class="grid grid-cols-8 gap-6 mb-4">
                     <x-radio label="Fémur" identificador="femur" opcion1="Si" opcion2="No"/>
                     <div class="col-span-4 hidden" id="praposkyTipoFemurContainer">
-                        <x-input type="text" label="Praposky Tipo" identificador="praposkyTipoFemur" />
+                    <x-select label="Praposky tipo" identificador="praposkyTipoFemur" :options="[
+                                ['value' => '1', 'label_opcion' => '1'],
+                                ['value' => '2A', 'label_opcion' => '2-A'],
+                                ['value' => '2B', 'label_opcion' => '2-B'],
+                                ['value' => '2C', 'label_opcion' => '2-C'],
+                                ['value' => '3A', 'label_opcion' => '3-A'],
+                                ['value' => '3B', 'label_opcion' => '3-B'],
+                                ['value' => '3C', 'label_opcion' => '3-C']
+                            ]" />
                     </div>
                 </div>
                 <div class="grid grid-cols-8 gap-6 mb-6">
                     <x-radio label="Defectos óseos acetábulo" identificador="defectosOseosAce" opcion1="Si" opcion2="No" />
-                    <div class="col-span-4 hidden" id="praposkyTipoAcetabuloContainer">
-                        <x-input type="text" label="Praposky Tipo" identificador="praposkyTipoAcetabulo" />
+                    <div class="col-span-4 hidden" id="praposkyTipoAcetabuloContainer">´
+                        <x-select label="Praposky tipo" identificador="praposkyTipoAcetabulo" :options="[
+                                ['value' => '1', 'label_opcion' => 'Tipo 1'],
+                                ['value' => '2A', 'label_opcion' => 'Tipo 2-A'],
+                                ['value' => '2B', 'label_opcion' => 'Tipo 2-B'],
+                                ['value' => '2C', 'label_opcion' => 'Tipo 2-C'],
+                                ['value' => '3A', 'label_opcion' => 'Tipo 3-A'],
+                                ['value' => '3B', 'label_opcion' => 'Tipo 3-B']
+                            ]" />
                     </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-8 gap-6 mb-6">

@@ -10,14 +10,6 @@
 </head>
 <body class="bg-gray-200">
     <header>
-        <nav class="bg-white border-gray-200 dark:bg-gray-900">
-            <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-                <a href="/admin" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="{{ asset('images/DrLuis.jpg') }}" class="h-8" alt="Flowbite Logo" />
-                    <span class=" text-black self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Dr. Luis Silva Cisneros</span>
-                </a>
-            </div>
-        </nav>
     </header>
     <main>
         @yield('content')
