@@ -170,15 +170,21 @@
                     <x-radio label="Protrusión Acetabular" identificador="protrusionAce" opcion1="Si" opcion2="No" />
                     <x-radio label="Discontinuidad Pélvica" identificador="discontinuidadPelvica" opcion1="Si" opcion2="No" />
                     <x-radio label="Aporte Biológico" identificador="aporteBiologico" opcion1="No" opcion2="Si" />
-                    <div class="col-span-4 hidden" id="tipoAporteBiologicoContainer">
-                        <x-select label="Tipo de Aporte Biológico" identificador="tipoAporteBiologico" :options="[
-                            ['value' => 'Forma', 'label_opcion' => 'Forma'],
-                            ['value' => 'Injerto Óseo en Chip', 'label_opcion' => 'Injerto Óseo en Chip'],
-                            ['value' => 'Pila de Monedas', 'label_opcion' => 'Pila de Monedas'],
-                            ['value' => 'Injerto Óseo Estructural de Cabeza de Fémur', 'label_opcion' => 'Injerto Óseo Estructural de Cabeza de Fémur'],
-                            ['value' => 'Médula Ósea', 'label_opcion' => 'Médula Ósea'],
-                            ['value' => 'Otros', 'label_opcion' => 'Otros']
+                    <div class="col-span-8 hidden" id="tipoAporteBiologicoContainer">
+                        <x-radiomulti
+                            name="tipoAporteBiologico"
+                            label="Tipo de aporte biológico"
+                            :options="[
+                                ['value' => 'Forma', 'label' => 'Forma'],
+                                ['value' => 'Injerto Óseo en Chip', 'label' => 'Injerto Óseo en Chip'],
+                                ['value' => 'Pila de Monedas', 'label' => 'Pila de Monedas'],
+                                ['value' => 'Injerto Óseo Estructural de Cabeza de Fémur', 'label' => 'Injerto Óseo Estructural de Cabeza de Fémur'],
+                                ['value' => 'Médula Ósea', 'label' => 'Médula Ósea'],
+                                ['value' => 'Otros', 'label' => 'Otros']
                         ]" />
+                        <div id="tipoAporteBiologicoOtros" class="hidden mt-2">
+                            <x-input type="text" label="Especifique Otros" identificador="tipoAporteBiologicoOtros" />
+                        </div>
                     </div>
                 </div>
             </div>

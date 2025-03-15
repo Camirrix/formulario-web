@@ -1,5 +1,5 @@
 <div class="overflow-x-auto shadow-md sm:rounded-lg items-center justify-center p-5 max-w-5xl mx-auto">
-    <h1 class="text-xl font-bold text-gray-800 mb-5 text-center uppercase w-full">Detalles del pacientes</h1>
+    <h1 class="text-xl font-bold text-gray-800 mb-5 text-center uppercase w-full">Data del pacientes</h1>
     <table class="w-full table-auto text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>

@@ -10,6 +10,7 @@
 </head>
 <body class="bg-gray-200">
     <header>
+        <x-navbar_admin />
     </header>
     <main>
         @yield('content')

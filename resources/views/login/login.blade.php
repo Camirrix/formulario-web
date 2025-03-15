@@ -1,94 +1,34 @@
-@extends('layouts.admin')
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-200 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm">
+        <h1 class="text-xl font-bold mb-4 text-center">Iniciar sesión</h1>
+        @if($errors->any())
+            <div class="mb-4 text-red-600">
+                {{ $errors->first('login') }}
+            </div>
+        @endif
+        <form method="POST" action="{{ route('login.perform') }}">
+            @csrf
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700">Usuario</label>
+                <input id="username" name="username" type="text" required class="mt-1 p-2 border border-gray-300 rounded w-full">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700">Contraseña</label>
+                <input id="password" name="password" type="password" required class="mt-1 p-2 border border-gray-300 rounded w-full">
+            </div>
+            <button type="submit" class="w-full bg-indigo-600 text-white p-2 rounded hover:bg-indigo-500">
+                Iniciar sesión
+            </button>
+        </form>
+    </div>
+</body>
+</html>
 
-@section('title', 'Formulario')
-
-@section('content')
-<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-  <div class="mx-auto max-w-lg">
-    <h1 class="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">Página administrativa</h1>
-
-    <p class="mx-auto mt-4 max-w-md text-center text-gray-500">
-      En ella podrá gestionar los contenidos de los pacientes que hayan respondido el formulario.
-    </p>
-
-    <form method="POST" action="{{ route('login') }}" class="mt-6 mb-0 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
-      @csrf
-      <p class="text-center text-lg font-medium">Ingrese a su cuenta</p>
-
-      <div>
-        <label for="name" class="sr-only">Usuario</label>
-        <div class="relative">
-          <input
-            type="text"
-            name="name"
-            id="name"
-            class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-xs"
-            placeholder="Ingrese su usuario"
-            required
-          />
-          <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="size-4 text-gray-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-              />
-            </svg>
-          </span>
-        </div>
-      </div>
-
-      <div>
-        <label for="password" class="sr-only">Contraseña</label>
-        <div class="relative">
-          <input
-            type="password"
-            name="password"
-            id="password"
-            class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-xs"
-            placeholder="Ingrese su contraseña"
-            required
-          />
-          <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="size-4 text-gray-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-              />
-            </svg>
-          </span>
-        </div>
-      </div>
-
-      <button
-        type="submit"
-        class="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
-      >
-        Iniciar sesión
-      </button>
-    </form>
-  </div>
-</div>
-
-@endsection

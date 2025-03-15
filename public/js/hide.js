@@ -69,3 +69,21 @@ $(document).ready(function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Selecciona todos los checkboxes del radiomulti de aporte biológico
+    const checkboxes = document.querySelectorAll('input[name="tipoAporteBiologico[]"]');
+    const otrosInputContainer = document.getElementById('tipoAporteBiologicoOtros');
+
+    checkboxes.forEach(function(checkbox){
+        checkbox.addEventListener('change', function(){
+            // Verifica si el checkbox de opción "Otros" está seleccionado
+            const otrosCheckbox = document.querySelector('input[name="tipoAporteBiologico[]"][value="Otros"]');
+            if(otrosCheckbox && otrosCheckbox.checked) {
+                otrosInputContainer.classList.remove('hidden');
+            } else {
+                otrosInputContainer.classList.add('hidden');
+            }
+        });
+    });
+});
