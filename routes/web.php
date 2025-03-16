@@ -42,3 +42,5 @@ Route::post('/login', function (Illuminate\Http\Request $request) {
 
     return back()->withErrors(['login' => 'Credenciales incorrectas.']);
 })->name('login.perform');
+
+Route::resource('pacientes', \App\Http\Controllers\PacienteController::class);

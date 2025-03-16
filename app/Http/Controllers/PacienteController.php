@@ -78,4 +78,32 @@ class PacienteController extends Controller
         // Redirige o muestra un mensaje
         return redirect()->back()->with('success', '¡Formulario enviado con éxito!');
     }
+
+    public function update(Request $request, $id)
+    {
+        // Validación básica para campo y valor
+        $validated = $request->validate([
+            'campo' => 'required|string',
+            'valor' => 'nullable|string',
+        ]);
+
+        $paciente = Paciente::findOrFail($id);
+        if (!in_array($validated['campo'], $paciente->getFillable())) {
+            if ($request->ajax()) {
+                return response()->json(['error' => 'Campo inválido'], 400);
+            }
+            return redirect()->back()->with('error', 'Campo inválido');
+        }
+
+        $campo = $validated['campo'];
+        $valor = $validated['valor'];
+        $paciente->$campo = $valor;
+        $paciente->save();
+
+        if ($request->ajax()) {
+            return response()->json(['success' => true, 'campo' => $campo, 'valor' => $valor]);
+        }
+
+        return redirect()->back()->with('success', 'Campo actualizado correctamente');
+    }
 }

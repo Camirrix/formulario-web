@@ -42,8 +42,10 @@
         </div>
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-            <form id="editForm" method="POST" action="#">
+            <form id="editForm" method="POST" action="{{ route('pacientes.update', $paciente->id) }}">
                 @csrf
+                @method('PUT')
+                <input type="hidden" id="campoField" name="campo" value=""/>
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div>
                         <label id="campoLabel" class="block pl-2 mb-2 text-md font-medium text-gray-900 dark:text-white"></label>
@@ -51,7 +53,7 @@
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm">
+                    <button type="button" onclick="submitModalUpdate()" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm">
                         Guardar
                     </button>
                     <button type="button" onclick="closeModal()" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
@@ -63,17 +65,5 @@
     </div>
 </div>
 
-<script>
-    function openModal(campo, valor) {
-        // Configura los valores en el modal
-        document.getElementById('campoLabel').innerText = 'Editar ' + campo;
-        document.getElementById('campoInput').value = valor;
-        // Abre el modal
-        document.getElementById('editModal').classList.remove('hidden');
-    }
-
-    function closeModal() {
-        // Cierra el modal
-        document.getElementById('editModal').classList.add('hidden');
-    }
-</script>
+<!-- Se incluye el archivo JS externo -->
+<script src="{{ asset('js/modal.js') }}"></script>
