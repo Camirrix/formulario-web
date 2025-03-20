@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'Formulario')
-
 @section('content')
     <div class="mt-4 flex flex-col items-center justify-center p-5 form-bg bg-white rounded-lg shadow-lg max-w-4xl mx-auto">
         <div class="flex items-center justify-between w-full mb-5">
