@@ -22,6 +22,8 @@ class Paciente extends Model
         'clinica',
         'cirugiaPrevia',
         'diagnostico',
+        'TonnisOsteo',
+        'OtrosDiagnostico',
         'tipoCirugia',
         'scoreHarris',
         'peso',
@@ -74,6 +76,18 @@ class Paciente extends Model
         'protrusionAce',
         'discontinuidadPelvica',
         'aporteBiologico',
-        'tipoAporteBiologico'
+        'tipoAporteBiologico',
+        'tipoAporteBiologicoOtros'
     ];
+
+    // Añade el cast para 'tipoAporteBiologico'
+    protected $casts = [
+        'tipoAporteBiologico' => 'array',
+    ];
+
+    // Método para serializar atributos JSON sin escapado de caracteres
+    protected function asJson($value)
+    {
+        return json_encode($value, JSON_UNESCAPED_UNICODE);
+    }
 }

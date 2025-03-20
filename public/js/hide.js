@@ -68,22 +68,81 @@ $(document).ready(function() {
             $('input[name="tipoAporteBiologico"]').prop('checked', false);
         }
     });
-});
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Selecciona todos los checkboxes del radiomulti de aporte biológico
-    const checkboxes = document.querySelectorAll('input[name="tipoAporteBiologico[]"]');
-    const otrosInputContainer = document.getElementById('tipoAporteBiologicoOtros');
+    // Opciones de Autoinjerto
+    var autoCheckbox = document.getElementById("AutoinjertoPerone");
+    if(autoCheckbox){
+        autoCheckbox.addEventListener("click", toggleAutoinjertoOptions);
+        autoCheckbox.addEventListener("change", toggleAutoinjertoOptions);
+        toggleAutoinjertoOptions();
+    }
 
-    checkboxes.forEach(function(checkbox){
-        checkbox.addEventListener('change', function(){
-            // Verifica si el checkbox de opción "Otros" está seleccionado
-            const otrosCheckbox = document.querySelector('input[name="tipoAporteBiologico[]"][value="Otros"]');
-            if(otrosCheckbox && otrosCheckbox.checked) {
-                otrosInputContainer.classList.remove('hidden');
-            } else {
-                otrosInputContainer.classList.add('hidden');
+    // Función para mostrar/ocultar el contenedor de aportes biológicos
+    function toggleAutoinjertoOptions(){
+        var autoCheckbox = document.getElementById("AutoinjertoPerone");
+        if(!autoCheckbox) return;
+        var optionIds = ["Vascularizado", "NoVascularizado"];
+        optionIds.forEach(function(id) {
+            var input = document.getElementById(id);
+            if(input){
+                var parentDiv = input.closest("div");
+                if(autoCheckbox.checked){
+                    parentDiv.classList.remove("hidden");
+                } else {
+                    parentDiv.classList.add("hidden");
+                }
             }
         });
+    }
+    document.addEventListener("DOMContentLoaded", function(){
+
     });
+
+    // Opciones de Autoinjerto
+    var autoCheckbox = document.getElementById("Autoinjerto");
+    if(autoCheckbox){
+        autoCheckbox.addEventListener("click", toggleAutoinjertoOptions);
+        autoCheckbox.addEventListener("change", toggleAutoinjertoOptions);
+        toggleAutoinjertoOptions();
+    }
+
+    // Función para mostrar/ocultar el campo "Especifique Otros" en aportes biológicos utilizando estilo de autoinjerto
+    function toggleOtrosOptions(){
+        var otrosCheckbox = document.getElementById("OtrosAporte");
+        if(!otrosCheckbox) return;
+        var otrosDiv = document.getElementById("tipoAporteBiologicoOtros");
+        if(otrosCheckbox.checked){
+            otrosDiv.classList.remove("hidden");
+        } else {
+            otrosDiv.classList.add("hidden");
+        }
+    }
+    var otrosCheckbox = document.getElementById("OtrosAporte");
+    if(otrosCheckbox){
+        otrosCheckbox.addEventListener("change", toggleOtrosOptions);
+        otrosCheckbox.addEventListener("click", toggleOtrosOptions);
+        toggleOtrosOptions();
+    }
+
+    // Mostrar/ocultar tonnisOsteoContainer según la opción seleccionada en "diagnostico"
+    $('#diagnostico').change(function() {
+        if ($(this).val() === 'Osteoartrosis') {
+            $('#tonnisOsteoContainer').fadeIn('300').removeClass('hidden');
+        } else {
+            $('#tonnisOsteoContainer').fadeOut('300', function() {
+                $(this).addClass('hidden');
+            });
+        }
+    }).trigger('change');
+
+    $('#diagnostico').change(function() {
+        if ($(this).val() === 'Otros') {
+            $('#otrosDiagnosticoContainer').fadeIn('300').removeClass('hidden');
+        } else {
+            $('#otrosDiagnosticoContainer').fadeOut('300', function() {
+                $(this).addClass('hidden');
+            });
+        }
+    }).trigger('change');
+
 });

@@ -1,0 +1,22 @@
+.form-bg {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.form-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/DrLuis.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+#confirmation-modal {
+    overflow: visible !important; /* Permite que el modal se muestre completo */
+    z-index: 9999 !important;      /* Se posiciona por encima de todo */
+}

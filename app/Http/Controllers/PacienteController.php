@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr; // nueva línea
 use App\Models\Paciente; // Asegúrate de tener el modelo creado
 
 class PacienteController extends Controller
@@ -23,6 +24,8 @@ class PacienteController extends Controller
             'clinica'          => 'nullable|string',
             'cirugiaPrevia'   => 'nullable|string',
             'diagnostico'      => 'nullable|string',
+            'TonnisOsteo'      => 'nullable|string',
+            'OtrosDiagnostico'   => 'nullable|string',
             'tipoCirugia'      => 'nullable|string',
             'scoreHarris'      => 'nullable|string',
             'peso'             => 'nullable|numeric',
@@ -69,8 +72,14 @@ class PacienteController extends Controller
             'protrusionAce'    => 'nullable|string',
             'discontinuidadPelvica' => 'nullable|string',
             'aporteBiologico'  => 'nullable|string',
-            'tipoAporteBiologico' => 'nullable|string'
+            'tipoAporteBiologico' => 'nullable|array', // se valida como array
+            'tipoAporteBiologicoOtros' => 'nullable|string'
         ]);
+
+        // Aplanar completamente el arreglo de tipoAporteBiologico
+        if (isset($validated['tipoAporteBiologico'])) {
+            $validated['tipoAporteBiologico'] = Arr::flatten($validated['tipoAporteBiologico']);
+        }
 
         // Guarda los datos en la base de datos
         Paciente::create($validated);
