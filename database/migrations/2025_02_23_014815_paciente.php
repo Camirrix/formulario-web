@@ -19,14 +19,17 @@ return new class extends Migration
             $table->string('historia')->nullable();
             $table->string('nombres')->nullable();
             $table->string('apellidos')->nullable();
-            $table->date('fecha_cirugia')->nullable();
-            $table->string('cadera')->nullable();
+            $table->string('cedula')->nullable();
             $table->integer('edad')->nullable();
-            $table->string('clinica')->nullable();
-            $table->string('cirugia_previa')->nullable();
             $table->string('telefono')->nullable();
             $table->string('direccion')->nullable();
+            $table->date('fecha_cirugia')->nullable();
+            $table->string('cadera')->nullable();
+            $table->string('clinica')->nullable();
+            $table->string('cirugia_previa')->nullable();
             $table->string('diagnostico')->nullable();
+            $table->string('TonnisOsteo')->nullable();
+            $table->string('OtrosDiagnostico')->nullable();
             $table->string('tipoCirugia')->nullable();
             $table->string('scoreHarris')->nullable();
             $table->decimal('peso', 5, 2)->nullable();
@@ -40,10 +43,11 @@ return new class extends Migration
             $table->string('tamanoAcetabulo')->nullable();
             $table->string('tamanoLinerPoli')->nullable();
             $table->string('tamanoLiner')->nullable();
-            $table->string('opcionesLiner')->nullable(); // proveniente del select para opciones de liner
+            $table->string('tipoLiner')->nullable();
             $table->integer('numTornillos')->nullable();
             $table->string('medidasTornillos')->nullable();
-            $table->string('tipoFemur')->nullable();
+            $table->string('tipoVastago')->nullable();
+            $table->string('femurDorr')->nullable();
             $table->string('medidasTallo')->nullable();
             $table->string('Cuello')->nullable();
             $table->string('Cabeza')->nullable();
@@ -79,6 +83,8 @@ return new class extends Migration
             $table->string('discontinuidadPelvica')->nullable();
             $table->string('aporteBiologico')->nullable();
             $table->string('tipoAporteBiologico')->nullable();
+            $table->string('tipoAporteBiologicoOtros')->nullable();
+
 
             $table->timestamps();
         });
