@@ -17,10 +17,10 @@
         @yield('content')
     </main>
 
-    <script src="/js/hide.js"></script>
-    <script src="/js/multipaso.js"></script>
-    <script src="/js/Scroll.js"></script>
+    <script src="{{ asset('js/hide.js') }}"></script>
+    <script src="{{ asset('js/multipaso.js') }}"></script>
+    <script src="{{ asset('js/Scroll.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-    <script src="/js/evaluacionInputs.js"></script>
+    <script src="{{ asset('js/evaluacionInputs.js') }}"></script>
 </body>
 </html>
