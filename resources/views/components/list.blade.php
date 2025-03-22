@@ -22,10 +22,10 @@
                             {{ ucwords(str_replace('_', ' ', $campo)) }}
                         </th>
                         <td class="px-6 py-4">
-                            {{ $valor ?? 'No se rellenó' }}
+                            {{ is_array($valor) ? implode(', ', $valor) : ($valor ?? 'No se rellenó') }}
                         </td>
                         <td class="px-6 py-4 text-right hidden sm:table-cell">
-                            <a href="javascript:void(0)" onclick="openModal('{{ $campo }}', '{{ $valor }}')" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                            <a href="javascript:void(0)" onclick="openModal('{{ $campo }}', '{{ is_array($valor) ? implode(', ', $valor) : $valor }}')" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
                         </td>
                     </tr>
                 @endif
