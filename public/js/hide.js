@@ -23,9 +23,32 @@ $(document).ready(function() {
 
     // Tipo de Acetábulo (modificada y optimizada)
     $('input[name="tipoAcetabulo"]').change(function() {
-        var show = $(this).val() === 'Atornillado';
-        toggleFade('#tamanoAceContainer', show);
-        toggleFade('#numTornillosContainer', show);
+        var value = $(this).val();
+        // Nueva lógica basada en slideDown/slideUp con animación secuencial para "Atornillado"
+        switch(value) {
+            case 'Atornillado':
+                $('#tamanoAceContainer').slideDown(300).removeClass('hidden');
+                $('#numTornillosContainer').slideDown(300).removeClass('hidden');
+                $('#medidasTornillosContainer').slideDown(300).removeClass('hidden');
+                $('#cuadranteColocacionContainer').slideDown(300).removeClass('hidden');
+                break;
+            case 'NoAtornillado':
+                $('#tamanoAceContainer, #numTornillosContainer, #medidasTornillosContainer, #cuadranteColocacionContainer').slideUp(300, function() {
+                    $(this).addClass('hidden');
+                });
+                break;
+            default:
+                // Comportamiento alternativo: alternar visibilidad de todos los contenedores simultáneamente
+                $('#tamanoAceContainer, #numTornillosContainer, #medidasTornillosContainer, #cuadranteColocacionContainer').each(function(){
+                    if($(this).hasClass('hidden')) {
+                        $(this).slideDown(300).removeClass('hidden');
+                    } else {
+                        $(this).slideUp(300, function(){
+                            $(this).addClass('hidden');
+                        });
+                    }
+                });
+        }
     });
 
     // Fracturas Intraoperatorias
