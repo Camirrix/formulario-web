@@ -1,107 +1,64 @@
 $(document).ready(function() {
     // Ocultar los contenedores al inicio
-    $('#numUnidadesSangreContainer').addClass('hidden');
-    $('#tipoFracturaContainer').addClass('hidden');
-    $('#tratamientoContainer').addClass('hidden');
-    $('#praposkyTipoFemurContainer').addClass('hidden');
-    $('#praposkyTipoAcetabuloContainer').addClass('hidden');
-    $('#tipoAporteBiologicoContainer').addClass('hidden');
+    $('#numUnidadesSangreContainer, #tipoFracturaContainer, #tratamientoContainer, #praposkyTipoFemurContainer, #praposkyTipoAcetabuloContainer, #tipoAporteBiologicoContainer').addClass('hidden');
 
-    // Función para mostrar/ocultar el contenedor de numero de unidades de sangre
-    $('input[name="necesidadSangre"]').change(function() {
-        if ($(this).val() === 'Si') {
-            $('#numUnidadesSangreContainer').fadeIn('300');
+    // Función helper para mostrar/ocultar un elemento y opcionalmente reiniciar un input
+    function toggleFade(selector, show, resetSelector) {
+        if(show) {
+            $(selector).fadeIn('300').removeClass('hidden');
         } else {
-            $('#numUnidadesSangreContainer').fadeOut('300', function() {
+            $(selector).fadeOut('300', function(){
                 $(this).addClass('hidden');
             });
-            $('input[name="numUnidadesSangre"]').prop('checked', false);
+            if(resetSelector) {
+                $(resetSelector).prop('checked', false);
+            }
         }
-    });
-
-    // Función para mostrar/ocultar el contenedor de tipo de acetábulo
-    $('input[name="tipoAcetabulo"]').change(function() {
-        if ($(this).val() === 'Atornillado') {
-            $('#tamanoAceContainer').fadeIn('300');
-            $('#numTornillosContainer').fadeIn('300');
-            $('#medidasTornillosContainer').fadeIn('300');
-            $('#cuadranteColocacionContainer').fadeIn('300');
-        } else {
-            $('#tamanoAceContainer').fadeOut('300', function() {
-                $(this).addClass('hidden');
-            });
-            $('#numTornillosContainer').fadeOut('300', function() {
-                $(this).addClass('hidden');
-            });
-            $('#medidasTornillosContainer').fadeOut('300', function() {
-                $(this).addClass('hidden');
-            });
-            $('#cuadranteColocacionContainer').fadeOut('300', function() {
-                $(this).addClass('hidden');
-            });
-        }
-    });
-
-    // Función para mostrar/ocultar el contenedor de fracturas intraoperatorias
-    $('input[name="fracturasIntraoperatorias"]').change(function() {
-        if ($(this).val() === 'Si') {
-            $('#tipoFracturaContainer').fadeIn('300');
-            $('#tratamientoContainer').fadeIn('300');
-        } else {
-            $('#tipoFracturaContainer').fadeOut('300', function() {
-                $(this).addClass('hidden');
-            });
-            $('#tratamientoContainer').fadeOut('300', function() {
-                $(this).addClass('hidden');
-            });
-        }
-    });
-
-    // Función para mostrar/ocultar el contenedor de Fémur
-    $('input[name="femur"]').change(function() {
-        if ($(this).val() === 'Si') {
-            $('#praposkyTipoFemurContainer').fadeIn('300');
-        } else {
-            $('#praposkyTipoFemurContainer').fadeOut('300', function() {
-                $(this).addClass('hidden');
-            });
-            $('input[name="praposkyTipoFemur"]').prop('checked', false);
-        }
-    });
-
-    // Función para mostrar/ocultar el contenedor de Defectos óseos acetábulo
-    $('input[name="defectosOseosAce"]').change(function() {
-        if ($(this).val() === 'Si') {
-            $('#praposkyTipoAcetabuloContainer').fadeIn('300');
-        } else {
-            $('#praposkyTipoAcetabuloContainer').fadeOut('300', function() {
-                $(this).addClass('hidden');
-            });
-            $('input[name="praposkyTipoAcetabulo"]').prop('checked', false);
-        }
-    });
-
-    // Función para mostrar/ocultar el contenedor de aportes biológicos
-    $('input[name="aporteBiologico"]').change(function() {
-        if ($(this).val() === 'Si') {
-            $('#tipoAporteBiologicoContainer').fadeIn('300');
-        } else {
-            $('#tipoAporteBiologicoContainer').fadeOut('300', function() {
-                $(this).addClass('hidden');
-            });
-            $('input[name="tipoAporteBiologico"]').prop('checked', false);
-        }
-    });
-
-    // Opciones de Autoinjerto
-    var autoCheckbox = document.getElementById("AutoinjertoPerone");
-    if(autoCheckbox){
-        autoCheckbox.addEventListener("click", toggleAutoinjertoOptions);
-        autoCheckbox.addEventListener("change", toggleAutoinjertoOptions);
-        toggleAutoinjertoOptions();
     }
 
-    // Función para mostrar/ocultar el contenedor de aportes biológicos
+    // Necesidad de Sangre
+    $('input[name="necesidadSangre"]').change(function() {
+        toggleFade('#numUnidadesSangreContainer', $(this).val() === 'Si', 'input[name="numUnidadesSangre"]');
+    });
+
+    // Tipo de Acetábulo (modificada y optimizada)
+    $('input[name="tipoAcetabulo"]').change(function() {
+        var show = $(this).val() === 'Atornillado';
+        var contenedores = ['#tamanoAceContainer', '#numTornillosContainer', '#medidasTornillosContainer', '#cuadranteColocacionContainer'];
+        contenedores.forEach(function(selector) {
+            toggleFade(selector, show);
+        });
+    });
+
+    // Fracturas Intraoperatorias
+    $('input[name="fracturasIntraoperatorias"]').change(function() {
+        var show = $(this).val() === 'Si';
+        toggleFade('#tipoFracturaContainer', show);
+        toggleFade('#tratamientoContainer', show);
+    });
+
+    // Fémur
+    $('input[name="femur"]').change(function() {
+        toggleFade('#praposkyTipoFemurContainer', $(this).val() === 'Si', 'input[name="praposkyTipoFemur"]');
+    });
+
+    // Defectos óseos acetábulo
+    $('input[name="defectosOseosAce"]').change(function() {
+        toggleFade('#praposkyTipoAcetabuloContainer', $(this).val() === 'Si', 'input[name="praposkyTipoAcetabulo"]');
+    });
+
+    // Aportes biológicos
+    $('input[name="aporteBiologico"]').change(function() {
+        toggleFade('#tipoAporteBiologicoContainer', $(this).val() === 'Si', 'input[name="tipoAporteBiologico"]');
+    });
+
+    // Opciones de Autoinjerto con Perone
+    var autoCheckboxPerone = document.getElementById("AutoinjertoPerone");
+    if(autoCheckboxPerone){
+        autoCheckboxPerone.addEventListener("click", toggleAutoinjertoOptions);
+        autoCheckboxPerone.addEventListener("change", toggleAutoinjertoOptions);
+        toggleAutoinjertoOptions();
+    }
     function toggleAutoinjertoOptions(){
         var autoCheckbox = document.getElementById("AutoinjertoPerone");
         if(!autoCheckbox) return;
@@ -118,11 +75,8 @@ $(document).ready(function() {
             }
         });
     }
-    document.addEventListener("DOMContentLoaded", function(){
 
-    });
-
-    // Opciones de Autoinjerto
+    // Opciones de Autoinjerto (alternativo)
     var autoCheckbox = document.getElementById("Autoinjerto");
     if(autoCheckbox){
         autoCheckbox.addEventListener("click", toggleAutoinjertoOptions);
@@ -130,7 +84,7 @@ $(document).ready(function() {
         toggleAutoinjertoOptions();
     }
 
-    // Función para mostrar/ocultar el campo "Especifique Otros" en aportes biológicos utilizando estilo de autoinjerto
+    // Mostrar/Ocultar "Especifique Otros" en aportes biológicos con autoinjerto
     function toggleOtrosOptions(){
         var otrosCheckbox = document.getElementById("OtrosAporte");
         if(!otrosCheckbox) return;
@@ -148,25 +102,11 @@ $(document).ready(function() {
         toggleOtrosOptions();
     }
 
-    // Mostrar/ocultar tonnisOsteoContainer según la opción seleccionada en "diagnostico"
+    // Diagnóstico: combinar mostrar/ocultar contenedores según opción seleccionada
     $('#diagnostico').change(function() {
-        if ($(this).val() === 'Osteoartrosis') {
-            $('#tonnisOsteoContainer').fadeIn('300').removeClass('hidden');
-        } else {
-            $('#tonnisOsteoContainer').fadeOut('300', function() {
-                $(this).addClass('hidden');
-            });
-        }
-    }).trigger('change');
-
-    $('#diagnostico').change(function() {
-        if ($(this).val() === 'Otros') {
-            $('#otrosDiagnosticoContainer').fadeIn('300').removeClass('hidden');
-        } else {
-            $('#otrosDiagnosticoContainer').fadeOut('300', function() {
-                $(this).addClass('hidden');
-            });
-        }
+        var val = $(this).val();
+        toggleFade('#tonnisOsteoContainer', val === 'Osteoartrosis');
+        toggleFade('#otrosDiagnosticoContainer', val === 'Otros');
     }).trigger('change');
 
 });
