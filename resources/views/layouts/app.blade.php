@@ -22,5 +22,6 @@
     <script src="{{ asset('js/Scroll.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script src="{{ asset('js/evaluacionInputs.js') }}"></script>
+    <script src="{{ asset('js/tipoAcetabulo.js') }}"></script>
 </body>
 </html>

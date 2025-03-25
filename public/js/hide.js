@@ -21,35 +21,7 @@ $(document).ready(function() {
         toggleFade('#numUnidadesSangreContainer', $(this).val() === 'Si', 'input[name="numUnidadesSangre"]');
     });
 
-    // Tipo de Acetábulo (modificada y optimizada)
-    $('input[name="tipoAcetabulo"]').change(function() {
-        var value = $(this).val();
-        // Nueva lógica basada en slideDown/slideUp con animación secuencial para "Atornillado"
-        switch(value) {
-            case 'Atornillado':
-                $('#tamanoAceContainer').slideDown(300).removeClass('hidden');
-                $('#numTornillosContainer').slideDown(300).removeClass('hidden');
-                $('#medidasTornillosContainer').slideDown(300).removeClass('hidden');
-                $('#cuadranteColocacionContainer').slideDown(300).removeClass('hidden');
-                break;
-            case 'NoAtornillado':
-                $('#tamanoAceContainer, #numTornillosContainer, #medidasTornillosContainer, #cuadranteColocacionContainer').slideUp(300, function() {
-                    $(this).addClass('hidden');
-                });
-                break;
-            default:
-                // Comportamiento alternativo: alternar visibilidad de todos los contenedores simultáneamente
-                $('#tamanoAceContainer, #numTornillosContainer, #medidasTornillosContainer, #cuadranteColocacionContainer').each(function(){
-                    if($(this).hasClass('hidden')) {
-                        $(this).slideDown(300).removeClass('hidden');
-                    } else {
-                        $(this).slideUp(300, function(){
-                            $(this).addClass('hidden');
-                        });
-                    }
-                });
-        }
-    });
+    // Se remueve la lógica de "tipoAcetabulo", la cual se encuentra en: tipoAcetabulo.js
 
     // Fracturas Intraoperatorias
     $('input[name="fracturasIntraoperatorias"]').change(function() {
