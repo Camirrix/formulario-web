@@ -20,3 +20,28 @@
     overflow: visible !important; /* Permite que el modal se muestre completo */
     z-index: 9999 !important;      /* Se posiciona por encima de todo */
 }
+
+#default-modal-tipoVastago {
+    overflow: visible !important; /* Permite que el modal se muestre completo */
+    z-index: 9999 !important;      /* Se posiciona por encima de todo */
+}
+
+#default-modal-tipoFractura {
+    overflow: visible !important; /* Permite que el modal se muestre completo */
+    z-index: 9999 !important;      /* Se posiciona por encima de todo */
+}
+
+#default-modal-praposkyTipoFemur {
+    overflow: visible !important; /* Permite que el modal se muestre completo */
+    z-index: 9999 !important;      /* Se posiciona por encima de todo */
+}
+
+#default-modal-praposkyTipoAcetabulo {
+    overflow: visible !important; /* Permite que el modal se muestre completo */
+    z-index: 9999 !important;      /* Se posiciona por encima de todo */
+}
+
+#default-modal-TonnisOsteo {
+    overflow: visible !important; /* Permite que el modal se muestre completo */
+    z-index: 9999 !important;      /* Se posiciona por encima de todo */
+}

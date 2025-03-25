@@ -34,6 +34,7 @@ class PacienteController extends Controller
             'comorbilidades'   => 'nullable|string',
             'comentarioAdicionales' => 'nullable|string',
             'tipoAcetabulo'    => 'nullable|string',
+            'cuadranteColocacion' => 'nullable|array',
             'tamanoAcetabulo'  => 'nullable|string',
             'tamanoLinerPoli'  => 'nullable|string',
             'tamanoLiner'      => 'nullable|string',
@@ -80,6 +81,8 @@ class PacienteController extends Controller
         if (isset($validated['tipoAporteBiologico'])) {
             $validated['tipoAporteBiologico'] = Arr::flatten($validated['tipoAporteBiologico']);
         }
+
+        $validated['cuadranteColocacion'] = Arr::flatten($request->input('cuadranteColocacion', []));
 
         // Guarda los datos en la base de datos
         Paciente::create($validated);

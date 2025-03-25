@@ -70,8 +70,25 @@
             <div class="step" id="step2" style="display:none;">
                 <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5">Parte 2: Componentes protésicos</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-                    <x-input type="text" label="Acetábulo/Tipo" identificador="tipoAcetabulo" />
-                    <x-input type="text" label="Tamaño" identificador="tamanoAcetabulo" />
+                    <x-radio label="Acetábulo/Tipo" identificador="tipoAcetabulo" opcion1="Atornillado" opcion2="Press-fit" />
+                    <div class="hidden col-span-4 md:col-span-2" id="numTornillosContainer">
+                        <x-input type="text" label="Número de tornillos" identificador="numTornillos" />
+                    </div>
+                    <div class="hidden col-span-4 md:col-span-2" id="medidasTornillosContainer">
+                        <x-input type="text" label="Longitud de tornillos (cm)" identificador="medidasTornillos" />
+                    </div>
+                    <div class="hidden col-span-4 md:col-span-2" id="cuadranteColocacionContainer">
+                        <x-checkboxmulti
+                            identificador="cuadranteColocacion"
+                            name="cuadranteColocacion[]"
+                            label="Cudrante de colocación"
+                            :options="[
+                                ['value' => 'Posterosuperior', 'label' => 'Cuadrante posterosuperior'],
+                                ['value' => 'Posteroinferior', 'label' => 'Cuadrante posteroinferior'],
+                                ['value' => 'Anterosuperior', 'label' => 'Cuadrante anterosuperior'],
+                                ['value' => 'Anteroinferior', 'label' => 'Cuadrante anteroinferior']
+                            ]" />
+                    </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mb-5">
                     <x-input type="text" label="Tamaño liner de polietileno" identificador="tamanoLinerPoli" />
@@ -85,9 +102,21 @@
                     <x-input type="text" label="Tamaño" identificador="tamanoLiner" />
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-                    <x-input type="text" label="Número de tornillos acetabulares" identificador="numTornillos" />
-                    <x-input type="text" label="Medidas de tornillos acetabulares" identificador="medidasTornillos" />
-                    <x-input type="text" label="Tipo de vástago femoral" identificador="tipoVastago" />
+                    <x-select label="Tipo de vástago femoral" identificador="tipoVastago" modal="si" direccion="imagen5.jpg" :options="[
+                                ['value' => '1A', 'label_opcion' => '1A (Perforal neck)'],
+                                ['value' => '1B', 'label_opcion' => '1B (Calcar loading)'],
+                                ['value' => '1C', 'label_opcion' => '1C (Calcar loading with lateral flare)'],
+                                ['value' => '1D', 'label_opcion' => '1D (Shortened tapered stem)'],
+                                ['value' => '2', 'label_opcion' => '2 (Single-wedge)'],
+                                ['value' => '3', 'label_opcion' => '3 (Double-wedge)'],
+                                ['value' => '4A', 'label_opcion' => '4A (Tapered round)'],
+                                ['value' => '4B', 'label_opcion' => '4B (Tapered rectangle)'],
+                                ['value' => '5A', 'label_opcion' => '5A (Tapered spline/cone)'],
+                                ['value' => '5B', 'label_opcion' => '5B (Cylindrical fully-coated)'],
+                                ['value' => '6A', 'label_opcion' => '6A (Modular neck)'],
+                                ['value' => '6B', 'label_opcion' => '6B (Modular body)'],
+                                ['value' => '7', 'label_opcion' => '7 (Anatomic)']
+                            ]" />
                     <x-select label="Femur Dorr" identificador="femurDorr" :options="[
                             ['value' => 'A', 'label_opcion' => 'A'],
                             ['value' => 'B', 'label_opcion' => 'B'],
@@ -121,9 +150,9 @@
                     <x-input type="text" label="Abordaje" identificador="abordaje" />
                 </div>
                 <div class="grid grid-cols-8 gap-6">
-                    <x-radio label="Necesidad de sangre" identificador="necesidadSangre" opcion1="Si" opcion2="No" />
+                    <x-radio label="Necesidad de concentrado globular" identificador="necesidadSangre" opcion1="Si" opcion2="No" />
                     <div class="col-span-8 md:col-span-4 hidden" id="numUnidadesSangreContainer">
-                        <x-select label="Número de unidades de sangre" identificador="numUnidadesSangre" :options="[
+                        <x-select label="Número de unidades de concentrado globular" identificador="numUnidadesSangre" :options="[
                             ['value' => '1', 'label_opcion' => '1 Unidad'],
                             ['value' => '2', 'label_opcion' => '2 Unidades'],
                             ['value' => '3', 'label_opcion' => '3 Unidades']

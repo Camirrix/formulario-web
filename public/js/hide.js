@@ -19,6 +19,26 @@ $(document).ready(function() {
         }
     });
 
+    // Función para mostrar/ocultar el contenedor de fracturas intraoperatorias
+    $('input[name="tipoAcetabulo"]').change(function() {
+        if ($(this).val() === 'Atornillado') {
+            $('#numTornillosContainer').fadeIn('300');
+            $('#medidasTornillosContainer').fadeIn('300');
+            $('#cuadranteColocacionContainer').fadeIn('300');
+        } else {
+            $('#numTornillosContainer').fadeOut('300', function() {
+                $(this).addClass('hidden');
+            });
+            $('#medidasTornillosContainer').fadeOut('300', function() {
+                $(this).addClass('hidden');
+            });
+            $('#cuadranteColocacionContainer').fadeOut('300', function() {
+                $(this).addClass('hidden');
+            });
+        }
+    });
+
+    // Función para mostrar/ocultar el contenedor de fracturas intraoperatorias
     $('input[name="fracturasIntraoperatorias"]').change(function() {
         if ($(this).val() === 'Si') {
             $('#tipoFracturaContainer').fadeIn('300');

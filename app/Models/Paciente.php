@@ -35,6 +35,7 @@ class Paciente extends Model
         //Parte 2
         'tipoAcetabulo',
         'tamanoAcetabulo',
+        'cuadranteColocacion',
         'tamanoLinerPoli',
         'tamanoLiner',
         'tipoLiner',
@@ -83,7 +84,9 @@ class Paciente extends Model
     // Añade el cast para 'tipoAporteBiologico'
     protected $casts = [
         'tipoAporteBiologico' => 'array',
+        'cuadranteColocacion' => 'array'
     ];
+
 
     // Método para serializar atributos JSON sin escapado de caracteres
     protected function asJson($value)
