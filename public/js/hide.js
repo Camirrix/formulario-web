@@ -24,10 +24,10 @@ $(document).ready(function() {
     // Tipo de Acetábulo (modificada y optimizada)
     $('input[name="tipoAcetabulo"]').change(function() {
         var show = $(this).val() === 'Atornillado';
-        var contenedores = ['#tamanoAceContainer', '#numTornillosContainer', '#medidasTornillosContainer', '#cuadranteColocacionContainer'];
-        contenedores.forEach(function(selector) {
-            toggleFade(selector, show);
-        });
+        toggleFade('#tamanoAceContainer', show);
+        toggleFade('#numTornillosContainer', show);
+        toggleFade('#medidasTornillosContainer', show);
+        toggleFade('#cuadranteColocacionContainer', show);
     });
 
     // Fracturas Intraoperatorias
