@@ -26,8 +26,6 @@ $(document).ready(function() {
         var show = $(this).val() === 'Atornillado';
         toggleFade('#tamanoAceContainer', show);
         toggleFade('#numTornillosContainer', show);
-        toggleFade('#medidasTornillosContainer', show);
-        toggleFade('#cuadranteColocacionContainer', show);
     });
 
     // Fracturas Intraoperatorias
