@@ -14,7 +14,7 @@
         utilizadas en el postoperatorio en el programa de entrenamiento de reemplazos articulares de cadera y rodilla "Dr. Luis Silva Cisneros".</h1>
         <form id="multiStepForm" method="POST" action="{{ route('paciente.store') }}" class="w-full">
             @csrf
-            <div class="step bg-[url({{ asset('images/LaVina.jpg') }})]" id="step1" >
+            <div class="step" id="step1" >
                 <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5">Parte 1: Paciente</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                     <x-input type="text" label="Número de historia" identificador="historia" clase="1"/>

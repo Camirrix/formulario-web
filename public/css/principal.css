@@ -4,7 +4,7 @@
     z-index: 0;
 }
 
-.form-bg::before {
+.form-bg::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -19,4 +19,32 @@
 #confirmation-modal {
     overflow: visible !important; /* Permite que el modal se muestre completo */
     z-index: 9999 !important;      /* Se posiciona por encima de todo */
+    position: fixed !important;     /* Evita que sea recortado por overflow:hidden */
+}
+
+div[id^="default-modal-"] {
+    overflow: visible !important;
+    z-index: 10000 !important;
+    position: fixed !important;     /* Evita que sea recortado por overflow:hidden */
+}
+
+.form-bg div[id^="default-modal-"] {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    overflow: visible !important;
+}
+
+/* Forzar que los modals se muestren correctamente fuera de .form-bg */
+.modal-fix {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    overflow: visible !important;
+    z-index: 11000 !important;
+    pointer-events: auto !important;
 }
