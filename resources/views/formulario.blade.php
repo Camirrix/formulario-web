@@ -69,19 +69,22 @@
 
             <div class="step" id="step2" style="display:none;">
                 <h2 class="text-blue-700 border-b-2 border-blue-700 pb-2 mb-5">Parte 2: Componentes protésicos</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+                <div class="grid grid-cols-2 md:grid-cols-8 gap-6 mb-6">
                     <x-radio label="Acetábulo/Tipo" identificador="tipoAcetabulo" opcion1="Atornillado" opcion2="Press-fit" />
-                    <div class="hidden col-span-4 md:col-span-2" id="numTornillosContainer">
-                        <x-input type="text" label="Número de tornillos" identificador="numTornillos" />
+                    <div class="hidden col-span-4 md:col-span-4" id="tamanoAceContainer">
+                        <x-input type="number" label="Tamaño de acetábulo (cm)" identificador="tamanoAcetabulo" />
                     </div>
-                    <div class="hidden col-span-4 md:col-span-2" id="medidasTornillosContainer">
-                        <x-input type="text" label="Longitud de tornillos (cm)" identificador="medidasTornillos" />
+                    <div class="hidden col-span-4 md:col-span-4" id="numTornillosContainer">
+                        <x-input type="number" label="Número de tornillos" identificador="numTornillos" />
                     </div>
-                    <div class="hidden col-span-4 md:col-span-2" id="cuadranteColocacionContainer">
+                    <div class="hidden col-span-4 md:col-span-4" id="medidasTornillosContainer">
+                        <x-input type="number" label="Longitud de tornillos (cm)" identificador="medidasTornillos" />
+                    </div>
+                    <div class="hidden col-span-4 md:col-span-8" id="cuadranteColocacionContainer">
                         <x-checkboxmulti
                             identificador="cuadranteColocacion"
                             name="cuadranteColocacion[]"
-                            label="Cudrante de colocación"
+                            label="Cuadrante de colocación"
                             :options="[
                                 ['value' => 'Posterosuperior', 'label' => 'Cuadrante posterosuperior'],
                                 ['value' => 'Posteroinferior', 'label' => 'Cuadrante posteroinferior'],

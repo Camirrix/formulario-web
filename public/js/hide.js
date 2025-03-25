@@ -19,13 +19,17 @@ $(document).ready(function() {
         }
     });
 
-    // Función para mostrar/ocultar el contenedor de fracturas intraoperatorias
+    // Función para mostrar/ocultar el contenedor de tipo de acetábulo
     $('input[name="tipoAcetabulo"]').change(function() {
         if ($(this).val() === 'Atornillado') {
+            $('#tamanoAceContainer').fadeIn('300');
             $('#numTornillosContainer').fadeIn('300');
             $('#medidasTornillosContainer').fadeIn('300');
             $('#cuadranteColocacionContainer').fadeIn('300');
         } else {
+            $('#tamanoAceContainer').fadeOut('300', function() {
+                $(this).addClass('hidden');
+            });
             $('#numTornillosContainer').fadeOut('300', function() {
                 $(this).addClass('hidden');
             });
