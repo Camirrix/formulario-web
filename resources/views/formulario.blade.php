@@ -37,7 +37,7 @@
                         ['value' => 'Otros', 'label_opcion' => 'Otros']
                     ]" />
                     <div id="tonnisOsteoContainer" class="col-span-2 w-full hidden">
-                        <x-select label="Osteoartrosis" identificador="TonnisOsteo" modal="si" direccion="imagen3.png" :options="[
+                        <x-select label="Osteoartrosis" identificador="TonnisOsteo" modal="si" direccion="Imagen3.png" :options="[
                             ['value' => 'Grado1', 'label_opcion' => 'Tonnis grado 0'],
                             ['value' => 'Grado1', 'label_opcion' => 'Tonnis grado 1'],
                             ['value' => 'Grado2', 'label_opcion' => 'Tonnis grado 2'],
@@ -170,7 +170,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                     <x-radio label="Fracturas intraoperatorias" identificador="fracturasIntraoperatorias" opcion1="Si" opcion2="No" />
                     <div class="hidden col-span-4 md:col-span-2" id="tipoFracturaContainer">
-                        <x-select label="Tipo de fractura" identificador="tipoFractura" modal="si" direccion="imagen4.jpg" :options="[
+                        <x-select label="Tipo de fractura" identificador="tipoFractura" modal="si" direccion="Imagen4.jpg" :options="[
                                 ['value' => 'A1', 'label_opcion' => 'A1 (Perforación cortical)'],
                                 ['value' => 'A2', 'label_opcion' => 'A2 (Grieta lineal no desplazada)'],
                                 ['value' => 'A3', 'label_opcion' => 'A3 (Fractura desplazada inestable)'],
@@ -191,7 +191,7 @@
                 <div class="grid grid-cols-4 md:grid-cols-8 gap-6 mb-4">
                     <x-radio label="Fémur" identificador="femur" opcion1="Si" opcion2="No"/>
                     <div class="col-span-4 hidden" id="praposkyTipoFemurContainer">
-                    <x-select label="Praposky tipo" identificador="praposkyTipoFemur" modal="si" direccion="imagen2.png" :options="[
+                    <x-select label="Praposky tipo" identificador="praposkyTipoFemur" modal="si" direccion="Imagen2.png" :options="[
                                 ['value' => '1', 'label_opcion' => 'I'],
                                 ['value' => '2A', 'label_opcion' => 'II-A'],
                                 ['value' => '2B', 'label_opcion' => 'II-B'],
@@ -205,7 +205,7 @@
                 <div class="grid grid-cols-4 md:grid-cols-8 gap-6 mb-6">
                     <x-radio label="Defectos óseos acetábulo" identificador="defectosOseosAce" opcion1="Si" opcion2="No" />
                     <div class="col-span-4 hidden" id="praposkyTipoAcetabuloContainer">´
-                        <x-select label="Praposky tipo" identificador="praposkyTipoAcetabulo" modal="si" direccion="imagen1.png" :options="[
+                        <x-select label="Praposky tipo" identificador="praposkyTipoAcetabulo" modal="si" direccion="Imagen1.png" :options="[
                                 ['value' => '1', 'label_opcion' => 'Tipo I'],
                                 ['value' => '2A', 'label_opcion' => 'Tipo II-A'],
                                 ['value' => '2B', 'label_opcion' => 'Tipo II-B'],
