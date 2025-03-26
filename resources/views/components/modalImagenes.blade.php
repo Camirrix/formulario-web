@@ -4,7 +4,7 @@
 </button>
 
 <!-- Simplified Main modal: solo se muestra la imagen -->
-<div id="default-modal-{{ $identificador }}" tabindex="-1" aria-hidden="true" class="hidden inset-0 flex justify-center items-center">
+<div id="default-modal-{{ $identificador }}" tabindex="-1" aria-hidden="true" class="hidden modal-fix fixed inset-0 flex justify-center items-center">
     @if(isset($direccion) && !empty($direccion))
         <img src="{{ asset('images/'.$direccion) }}" alt="Imagen del modal" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'">
     @else
