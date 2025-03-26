@@ -1,20 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Selecciona todos los modales que inicien con "default-modal-"
-    var modales = document.querySelectorAll('[id^="default-modal-"]');
-    modales.forEach(function(modal) {
+    // Reubica los modales si no son hijos directos de document.body
+    const modales = document.querySelectorAll('[id^="default-modal-"]');
+    for (const modal of modales) {
         if (modal.parentNode !== document.body) {
             document.body.appendChild(modal);
         }
-    });
+    }
 
-    // Agrega el listener a todos los botones con data-modal-toggle
-    document.querySelectorAll('[data-modal-toggle]').forEach(function(button) {
-        button.addEventListener('click', function() {
-            const targetId = button.getAttribute('data-modal-toggle');
+    // Asigna event listeners individualmente para cada botón
+    const botones = document.querySelectorAll('[data-modal-toggle]');
+    for (const boton of botones) {
+        boton.addEventListener('click', function() {
+            const targetId = boton.getAttribute('data-modal-toggle');
             const modal = document.getElementById(targetId);
             if (modal) {
                 modal.classList.toggle('hidden');
             }
         });
-    });
+    }
 });
